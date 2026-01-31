@@ -1,0 +1,2393 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Kenya Census</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="KenyaCensus_files/libs/clipboard/clipboard.min.js"></script>
+<script src="KenyaCensus_files/libs/quarto-html/quarto.js"></script>
+<script src="KenyaCensus_files/libs/quarto-html/popper.min.js"></script>
+<script src="KenyaCensus_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="KenyaCensus_files/libs/quarto-html/anchor.min.js"></script>
+<link href="KenyaCensus_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="KenyaCensus_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="KenyaCensus_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="KenyaCensus_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="KenyaCensus_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Kenya Census</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+</section>
+<section id="running-code" class="level2">
+<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1109 Columns: 111
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (106): timestamp, date, enumerator, consent, geo_community, village_lab...
+dbl    (4): hh_size, edu_children_schoolage_num, wb_happy, wb_hopeful
+date   (1): survey_date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="cell-output-display">
+
+<div id="jtllvrmiav" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jtllvrmiav table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#jtllvrmiav thead, #jtllvrmiav tbody, #jtllvrmiav tfoot, #jtllvrmiav tr, #jtllvrmiav td, #jtllvrmiav th {
+  border-style: none;
+}
+
+#jtllvrmiav p {
+  margin: 0;
+  padding: 0;
+}
+
+#jtllvrmiav .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#jtllvrmiav .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#jtllvrmiav .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#jtllvrmiav .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#jtllvrmiav .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jtllvrmiav .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jtllvrmiav .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#jtllvrmiav .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#jtllvrmiav .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#jtllvrmiav .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#jtllvrmiav .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#jtllvrmiav .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#jtllvrmiav .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#jtllvrmiav .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#jtllvrmiav .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#jtllvrmiav .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#jtllvrmiav .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#jtllvrmiav .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#jtllvrmiav .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jtllvrmiav .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#jtllvrmiav .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#jtllvrmiav .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#jtllvrmiav .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jtllvrmiav .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#jtllvrmiav .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#jtllvrmiav .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jtllvrmiav .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jtllvrmiav .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#jtllvrmiav .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jtllvrmiav .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#jtllvrmiav .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#jtllvrmiav .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jtllvrmiav .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jtllvrmiav .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#jtllvrmiav .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#jtllvrmiav .gt_left {
+  text-align: left;
+}
+
+#jtllvrmiav .gt_center {
+  text-align: center;
+}
+
+#jtllvrmiav .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#jtllvrmiav .gt_font_normal {
+  font-weight: normal;
+}
+
+#jtllvrmiav .gt_font_bold {
+  font-weight: bold;
+}
+
+#jtllvrmiav .gt_font_italic {
+  font-style: italic;
+}
+
+#jtllvrmiav .gt_super {
+  font-size: 65%;
+}
+
+#jtllvrmiav .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#jtllvrmiav .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#jtllvrmiav .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#jtllvrmiav .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#jtllvrmiav .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#jtllvrmiav .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#jtllvrmiav .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Overall</strong>, N = 1,109"><strong>Overall</strong>, N = 1,109</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Chembulet</strong>, N = 111"><strong>Chembulet</strong>, N = 111</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Kahuria</strong>, N = 206"><strong>Kahuria</strong>, N = 206</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Minyalala</strong>, N = 210"><strong>Minyalala</strong>, N = 210</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Mugaa</strong>, N = 159"><strong>Mugaa</strong>, N = 159</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Mutirithia</strong>, N = 76"><strong>Mutirithia</strong>, N = 76</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Ndibai</strong>, N = 144"><strong>Ndibai</strong>, N = 144</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Ulu</strong>, N = 203"><strong>Ulu</strong>, N = 203</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left">Do you have any school-aged children in your household?</td>
+<td headers="stat_0" class="gt_row gt_center">852 (77%)</td>
+<td headers="stat_1" class="gt_row gt_center">95 (86%)</td>
+<td headers="stat_2" class="gt_row gt_center">152 (74%)</td>
+<td headers="stat_3" class="gt_row gt_center">168 (80%)</td>
+<td headers="stat_4" class="gt_row gt_center">116 (73%)</td>
+<td headers="stat_5" class="gt_row gt_center">63 (83%)</td>
+<td headers="stat_6" class="gt_row gt_center">103 (72%)</td>
+<td headers="stat_7" class="gt_row gt_center">155 (76%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">How many school-aged children are in your household?</td>
+<td headers="stat_0" class="gt_row gt_center">2.4 (SD 1.2)</td>
+<td headers="stat_1" class="gt_row gt_center">2.5 (SD 1.2)</td>
+<td headers="stat_2" class="gt_row gt_center">2.3 (SD 1.1)</td>
+<td headers="stat_3" class="gt_row gt_center">2.2 (SD 1.1)</td>
+<td headers="stat_4" class="gt_row gt_center">2.4 (SD 1.3)</td>
+<td headers="stat_5" class="gt_row gt_center">3.2 (SD 1.5)</td>
+<td headers="stat_6" class="gt_row gt_center">2.5 (SD 1.3)</td>
+<td headers="stat_7" class="gt_row gt_center">2.3 (SD 1.2)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Are all school-aged children attending school full-time?</td>
+<td headers="stat_0" class="gt_row gt_center">819 (96%)</td>
+<td headers="stat_1" class="gt_row gt_center">91 (96%)</td>
+<td headers="stat_2" class="gt_row gt_center">152 (100%)</td>
+<td headers="stat_3" class="gt_row gt_center">159 (95%)</td>
+<td headers="stat_4" class="gt_row gt_center">105 (91%)</td>
+<td headers="stat_5" class="gt_row gt_center">63 (100%)</td>
+<td headers="stat_6" class="gt_row gt_center">102 (99%)</td>
+<td headers="stat_7" class="gt_row gt_center">147 (95%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Travel time to nearest school (one way)</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Less than 30 minutes</td>
+<td headers="stat_0" class="gt_row gt_center">502 (94%)</td>
+<td headers="stat_1" class="gt_row gt_center">32 (78%)</td>
+<td headers="stat_2" class="gt_row gt_center">95 (95%)</td>
+<td headers="stat_3" class="gt_row gt_center">120 (98%)</td>
+<td headers="stat_4" class="gt_row gt_center">85 (100%)</td>
+<td headers="stat_5" class="gt_row gt_center">8 (67%)</td>
+<td headers="stat_6" class="gt_row gt_center">48 (91%)</td>
+<td headers="stat_7" class="gt_row gt_center">114 (96%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;30–60 minutes</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;1–2 hours</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;More than 2 hours</td>
+<td headers="stat_0" class="gt_row gt_center">31 (5.8%)</td>
+<td headers="stat_1" class="gt_row gt_center">9 (22%)</td>
+<td headers="stat_2" class="gt_row gt_center">5 (5.0%)</td>
+<td headers="stat_3" class="gt_row gt_center">3 (2.4%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">4 (33%)</td>
+<td headers="stat_6" class="gt_row gt_center">5 (9.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">5 (4.2%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Don't know</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Do you pay for secondary school fees?</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Yes</td>
+<td headers="stat_0" class="gt_row gt_center">369 (43%)</td>
+<td headers="stat_1" class="gt_row gt_center">53 (56%)</td>
+<td headers="stat_2" class="gt_row gt_center">59 (39%)</td>
+<td headers="stat_3" class="gt_row gt_center">69 (41%)</td>
+<td headers="stat_4" class="gt_row gt_center">44 (38%)</td>
+<td headers="stat_5" class="gt_row gt_center">37 (59%)</td>
+<td headers="stat_6" class="gt_row gt_center">44 (43%)</td>
+<td headers="stat_7" class="gt_row gt_center">63 (41%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;No</td>
+<td headers="stat_0" class="gt_row gt_center">347 (41%)</td>
+<td headers="stat_1" class="gt_row gt_center">41 (43%)</td>
+<td headers="stat_2" class="gt_row gt_center">88 (58%)</td>
+<td headers="stat_3" class="gt_row gt_center">62 (37%)</td>
+<td headers="stat_4" class="gt_row gt_center">56 (48%)</td>
+<td headers="stat_5" class="gt_row gt_center">25 (40%)</td>
+<td headers="stat_6" class="gt_row gt_center">32 (31%)</td>
+<td headers="stat_7" class="gt_row gt_center">43 (28%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Not relevant - no child in secondary school</td>
+<td headers="stat_0" class="gt_row gt_center">136 (16%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.1%)</td>
+<td headers="stat_2" class="gt_row gt_center">5 (3.3%)</td>
+<td headers="stat_3" class="gt_row gt_center">37 (22%)</td>
+<td headers="stat_4" class="gt_row gt_center">16 (14%)</td>
+<td headers="stat_5" class="gt_row gt_center">1 (1.6%)</td>
+<td headers="stat_6" class="gt_row gt_center">27 (26%)</td>
+<td headers="stat_7" class="gt_row gt_center">49 (32%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">How do you pay for secondary school fees?</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Partially</td>
+<td headers="stat_0" class="gt_row gt_center">190 (51%)</td>
+<td headers="stat_1" class="gt_row gt_center">43 (81%)</td>
+<td headers="stat_2" class="gt_row gt_center">13 (22%)</td>
+<td headers="stat_3" class="gt_row gt_center">35 (51%)</td>
+<td headers="stat_4" class="gt_row gt_center">24 (55%)</td>
+<td headers="stat_5" class="gt_row gt_center">13 (35%)</td>
+<td headers="stat_6" class="gt_row gt_center">22 (50%)</td>
+<td headers="stat_7" class="gt_row gt_center">40 (63%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Fully</td>
+<td headers="stat_0" class="gt_row gt_center">179 (49%)</td>
+<td headers="stat_1" class="gt_row gt_center">10 (19%)</td>
+<td headers="stat_2" class="gt_row gt_center">46 (78%)</td>
+<td headers="stat_3" class="gt_row gt_center">34 (49%)</td>
+<td headers="stat_4" class="gt_row gt_center">20 (45%)</td>
+<td headers="stat_5" class="gt_row gt_center">24 (65%)</td>
+<td headers="stat_6" class="gt_row gt_center">22 (50%)</td>
+<td headers="stat_7" class="gt_row gt_center">23 (37%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Education level you hope children can finish</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Primary school</td>
+<td headers="stat_0" class="gt_row gt_center">4 (0.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">2 (1.0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">2 (1.0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Middle school</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Secondary school</td>
+<td headers="stat_0" class="gt_row gt_center">18 (1.6%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">2 (1.0%)</td>
+<td headers="stat_4" class="gt_row gt_center">10 (6.3%)</td>
+<td headers="stat_5" class="gt_row gt_center">4 (5.3%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">2 (1.0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;University</td>
+<td headers="stat_0" class="gt_row gt_center">795 (72%)</td>
+<td headers="stat_1" class="gt_row gt_center">94 (85%)</td>
+<td headers="stat_2" class="gt_row gt_center">146 (71%)</td>
+<td headers="stat_3" class="gt_row gt_center">162 (77%)</td>
+<td headers="stat_4" class="gt_row gt_center">94 (59%)</td>
+<td headers="stat_5" class="gt_row gt_center">51 (67%)</td>
+<td headers="stat_6" class="gt_row gt_center">101 (70%)</td>
+<td headers="stat_7" class="gt_row gt_center">147 (72%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Technical school</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Other</td>
+<td headers="stat_0" class="gt_row gt_center">292 (26%)</td>
+<td headers="stat_1" class="gt_row gt_center">17 (15%)</td>
+<td headers="stat_2" class="gt_row gt_center">60 (29%)</td>
+<td headers="stat_3" class="gt_row gt_center">44 (21%)</td>
+<td headers="stat_4" class="gt_row gt_center">55 (35%)</td>
+<td headers="stat_5" class="gt_row gt_center">21 (28%)</td>
+<td headers="stat_6" class="gt_row gt_center">43 (30%)</td>
+<td headers="stat_7" class="gt_row gt_center">52 (26%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Likelihood children will reach that level</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Very unlikely</td>
+<td headers="stat_0" class="gt_row gt_center">70 (8.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">41 (27%)</td>
+<td headers="stat_3" class="gt_row gt_center">5 (3.0%)</td>
+<td headers="stat_4" class="gt_row gt_center">2 (1.7%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">22 (14%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Somewhat unlikely</td>
+<td headers="stat_0" class="gt_row gt_center">44 (5.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">2 (1.3%)</td>
+<td headers="stat_3" class="gt_row gt_center">14 (8.3%)</td>
+<td headers="stat_4" class="gt_row gt_center">7 (6.0%)</td>
+<td headers="stat_5" class="gt_row gt_center">6 (9.5%)</td>
+<td headers="stat_6" class="gt_row gt_center">2 (1.9%)</td>
+<td headers="stat_7" class="gt_row gt_center">13 (8.4%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Somewhat likely</td>
+<td headers="stat_0" class="gt_row gt_center">276 (32%)</td>
+<td headers="stat_1" class="gt_row gt_center">10 (11%)</td>
+<td headers="stat_2" class="gt_row gt_center">32 (21%)</td>
+<td headers="stat_3" class="gt_row gt_center">97 (58%)</td>
+<td headers="stat_4" class="gt_row gt_center">51 (44%)</td>
+<td headers="stat_5" class="gt_row gt_center">39 (62%)</td>
+<td headers="stat_6" class="gt_row gt_center">13 (13%)</td>
+<td headers="stat_7" class="gt_row gt_center">34 (22%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Very likely</td>
+<td headers="stat_0" class="gt_row gt_center">462 (54%)</td>
+<td headers="stat_1" class="gt_row gt_center">85 (89%)</td>
+<td headers="stat_2" class="gt_row gt_center">77 (51%)</td>
+<td headers="stat_3" class="gt_row gt_center">52 (31%)</td>
+<td headers="stat_4" class="gt_row gt_center">56 (48%)</td>
+<td headers="stat_5" class="gt_row gt_center">18 (29%)</td>
+<td headers="stat_6" class="gt_row gt_center">88 (85%)</td>
+<td headers="stat_7" class="gt_row gt_center">86 (55%)</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<div class="cell-output-display">
+
+<div id="otnucuhvkc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#otnucuhvkc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#otnucuhvkc thead, #otnucuhvkc tbody, #otnucuhvkc tfoot, #otnucuhvkc tr, #otnucuhvkc td, #otnucuhvkc th {
+  border-style: none;
+}
+
+#otnucuhvkc p {
+  margin: 0;
+  padding: 0;
+}
+
+#otnucuhvkc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#otnucuhvkc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#otnucuhvkc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#otnucuhvkc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#otnucuhvkc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#otnucuhvkc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#otnucuhvkc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#otnucuhvkc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#otnucuhvkc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#otnucuhvkc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#otnucuhvkc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#otnucuhvkc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#otnucuhvkc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#otnucuhvkc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#otnucuhvkc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#otnucuhvkc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#otnucuhvkc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#otnucuhvkc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#otnucuhvkc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#otnucuhvkc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#otnucuhvkc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#otnucuhvkc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#otnucuhvkc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#otnucuhvkc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#otnucuhvkc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#otnucuhvkc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#otnucuhvkc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#otnucuhvkc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#otnucuhvkc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#otnucuhvkc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#otnucuhvkc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#otnucuhvkc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#otnucuhvkc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#otnucuhvkc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#otnucuhvkc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#otnucuhvkc .gt_left {
+  text-align: left;
+}
+
+#otnucuhvkc .gt_center {
+  text-align: center;
+}
+
+#otnucuhvkc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#otnucuhvkc .gt_font_normal {
+  font-weight: normal;
+}
+
+#otnucuhvkc .gt_font_bold {
+  font-weight: bold;
+}
+
+#otnucuhvkc .gt_font_italic {
+  font-style: italic;
+}
+
+#otnucuhvkc .gt_super {
+  font-size: 65%;
+}
+
+#otnucuhvkc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#otnucuhvkc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#otnucuhvkc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#otnucuhvkc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#otnucuhvkc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#otnucuhvkc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#otnucuhvkc .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Overall</strong>, N = 1,109"><strong>Overall</strong>, N = 1,109</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Chembulet</strong>, N = 111"><strong>Chembulet</strong>, N = 111</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Kahuria</strong>, N = 206"><strong>Kahuria</strong>, N = 206</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Minyalala</strong>, N = 210"><strong>Minyalala</strong>, N = 210</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Mugaa</strong>, N = 159"><strong>Mugaa</strong>, N = 159</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Mutirithia</strong>, N = 76"><strong>Mutirithia</strong>, N = 76</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Ndibai</strong>, N = 144"><strong>Ndibai</strong>, N = 144</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Ulu</strong>, N = 203"><strong>Ulu</strong>, N = 203</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left">Do you currently have any children attending primary school?</td>
+<td headers="stat_0" class="gt_row gt_center">739 (87%)</td>
+<td headers="stat_1" class="gt_row gt_center">82 (86%)</td>
+<td headers="stat_2" class="gt_row gt_center">135 (89%)</td>
+<td headers="stat_3" class="gt_row gt_center">141 (84%)</td>
+<td headers="stat_4" class="gt_row gt_center">103 (89%)</td>
+<td headers="stat_5" class="gt_row gt_center">57 (90%)</td>
+<td headers="stat_6" class="gt_row gt_center">89 (86%)</td>
+<td headers="stat_7" class="gt_row gt_center">132 (85%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Ongoing sustainability projects in community/school?</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Yes</td>
+<td headers="stat_0" class="gt_row gt_center">531 (72%)</td>
+<td headers="stat_1" class="gt_row gt_center">81 (99%)</td>
+<td headers="stat_2" class="gt_row gt_center">124 (92%)</td>
+<td headers="stat_3" class="gt_row gt_center">14 (9.9%)</td>
+<td headers="stat_4" class="gt_row gt_center">82 (80%)</td>
+<td headers="stat_5" class="gt_row gt_center">54 (95%)</td>
+<td headers="stat_6" class="gt_row gt_center">70 (79%)</td>
+<td headers="stat_7" class="gt_row gt_center">106 (80%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;No</td>
+<td headers="stat_0" class="gt_row gt_center">138 (19%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_2" class="gt_row gt_center">3 (2.2%)</td>
+<td headers="stat_3" class="gt_row gt_center">108 (77%)</td>
+<td headers="stat_4" class="gt_row gt_center">2 (1.9%)</td>
+<td headers="stat_5" class="gt_row gt_center">3 (5.3%)</td>
+<td headers="stat_6" class="gt_row gt_center">11 (12%)</td>
+<td headers="stat_7" class="gt_row gt_center">10 (7.6%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;I don't know</td>
+<td headers="stat_0" class="gt_row gt_center">70 (9.5%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">8 (5.9%)</td>
+<td headers="stat_3" class="gt_row gt_center">19 (13%)</td>
+<td headers="stat_4" class="gt_row gt_center">19 (18%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">8 (9.0%)</td>
+<td headers="stat_7" class="gt_row gt_center">16 (12%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">sust_project_list</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Bull fattening and sheep rearing</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">1 (1.9%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Feeding program</td>
+<td headers="stat_0" class="gt_row gt_center">2 (0.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.8%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Fodder selling</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Hay farming</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Hay harvester</td>
+<td headers="stat_0" class="gt_row gt_center">2 (0.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">2 (14%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Hay/grass</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Livestock/animal rearing</td>
+<td headers="stat_0" class="gt_row gt_center">322 (61%)</td>
+<td headers="stat_1" class="gt_row gt_center">29 (36%)</td>
+<td headers="stat_2" class="gt_row gt_center">70 (56%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">74 (90%)</td>
+<td headers="stat_5" class="gt_row gt_center">44 (81%)</td>
+<td headers="stat_6" class="gt_row gt_center">16 (23%)</td>
+<td headers="stat_7" class="gt_row gt_center">89 (84%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Livestock/animal rearing;</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">1 (1.9%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Livestock/animal rearing;Feeding program</td>
+<td headers="stat_0" class="gt_row gt_center">2 (0.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Livestock/animal rearing;Feeding Program</td>
+<td headers="stat_0" class="gt_row gt_center">2 (0.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">2 (2.4%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Livestock/animal rearing;Food program</td>
+<td headers="stat_0" class="gt_row gt_center">2 (0.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">2 (2.9%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Livestock/animal rearing;Food programs</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Livestock/animal rearing;Water harvesting</td>
+<td headers="stat_0" class="gt_row gt_center">16 (3.0%)</td>
+<td headers="stat_1" class="gt_row gt_center">6 (7.4%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.8%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">7 (10%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Livestock/animal rearing;Water harvesting;Food program</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Livestock/animal rearing;Water harvesting;Solar power</td>
+<td headers="stat_0" class="gt_row gt_center">2 (0.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Poultry keeping</td>
+<td headers="stat_0" class="gt_row gt_center">11 (2.1%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">11 (10%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden</td>
+<td headers="stat_0" class="gt_row gt_center">35 (6.6%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">24 (19%)</td>
+<td headers="stat_3" class="gt_row gt_center">7 (50%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">2 (3.7%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;Livestock/animal rearing</td>
+<td headers="stat_0" class="gt_row gt_center">30 (5.6%)</td>
+<td headers="stat_1" class="gt_row gt_center">2 (2.5%)</td>
+<td headers="stat_2" class="gt_row gt_center">24 (19%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">4 (5.7%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;Livestock/animal rearing;Feeding Program</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;Livestock/animal rearing;Poultry keeping</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;Livestock/animal rearing;Water harvesting</td>
+<td headers="stat_0" class="gt_row gt_center">16 (3.0%)</td>
+<td headers="stat_1" class="gt_row gt_center">2 (2.5%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.8%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">13 (19%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;Livestock/animal rearing;Water harvesting;Food program</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;Livestock/animal rearing;Water harvesting;Solar power</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;Tree planting</td>
+<td headers="stat_0" class="gt_row gt_center">3 (0.6%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">2 (3.7%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;Tree planting;Livestock/animal rearing</td>
+<td headers="stat_0" class="gt_row gt_center">18 (3.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">15 (19%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">2 (3.7%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;Tree planting;Livestock/animal rearing;Water harvesting</td>
+<td headers="stat_0" class="gt_row gt_center">21 (4.0%)</td>
+<td headers="stat_1" class="gt_row gt_center">8 (9.9%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">13 (19%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;Tree planting;Livestock/animal rearing;Water harvesting;Solar power</td>
+<td headers="stat_0" class="gt_row gt_center">18 (3.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">11 (14%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">7 (10%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School garden;Water harvesting</td>
+<td headers="stat_0" class="gt_row gt_center">2 (0.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">2 (2.5%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Selling water.proceeds shared between primary and high school</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Sheep rearing</td>
+<td headers="stat_0" class="gt_row gt_center">2 (0.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">2 (3.7%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Solar power</td>
+<td headers="stat_0" class="gt_row gt_center">2 (0.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.8%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Tree planting</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Tree planting;Livestock/animal rearing</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Tree planting;Livestock/animal rearing;Water harvesting</td>
+<td headers="stat_0" class="gt_row gt_center">3 (0.6%)</td>
+<td headers="stat_1" class="gt_row gt_center">2 (2.5%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.8%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Water harvesting</td>
+<td headers="stat_0" class="gt_row gt_center">5 (0.9%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.8%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">2 (2.9%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Parent/community involvement in school sustainability projects</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;No involvement</td>
+<td headers="stat_0" class="gt_row gt_center">14 (5.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (25%)</td>
+<td headers="stat_4" class="gt_row gt_center">2 (5.4%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">3 (13%)</td>
+<td headers="stat_7" class="gt_row gt_center">8 (14%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Low involvement</td>
+<td headers="stat_0" class="gt_row gt_center">71 (26%)</td>
+<td headers="stat_1" class="gt_row gt_center">4 (6.3%)</td>
+<td headers="stat_2" class="gt_row gt_center">11 (14%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (25%)</td>
+<td headers="stat_4" class="gt_row gt_center">19 (51%)</td>
+<td headers="stat_5" class="gt_row gt_center">3 (60%)</td>
+<td headers="stat_6" class="gt_row gt_center">17 (71%)</td>
+<td headers="stat_7" class="gt_row gt_center">16 (27%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Medium involvement</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;High involvement</td>
+<td headers="stat_0" class="gt_row gt_center">185 (69%)</td>
+<td headers="stat_1" class="gt_row gt_center">59 (94%)</td>
+<td headers="stat_2" class="gt_row gt_center">67 (86%)</td>
+<td headers="stat_3" class="gt_row gt_center">2 (50%)</td>
+<td headers="stat_4" class="gt_row gt_center">16 (43%)</td>
+<td headers="stat_5" class="gt_row gt_center">2 (40%)</td>
+<td headers="stat_6" class="gt_row gt_center">4 (17%)</td>
+<td headers="stat_7" class="gt_row gt_center">35 (59%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Income-generating activities linked to school?</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Yes</td>
+<td headers="stat_0" class="gt_row gt_center">326 (67%)</td>
+<td headers="stat_1" class="gt_row gt_center">70 (89%)</td>
+<td headers="stat_2" class="gt_row gt_center">106 (88%)</td>
+<td headers="stat_3" class="gt_row gt_center">11 (79%)</td>
+<td headers="stat_4" class="gt_row gt_center">43 (72%)</td>
+<td headers="stat_5" class="gt_row gt_center">37 (71%)</td>
+<td headers="stat_6" class="gt_row gt_center">31 (47%)</td>
+<td headers="stat_7" class="gt_row gt_center">28 (29%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;No</td>
+<td headers="stat_0" class="gt_row gt_center">161 (33%)</td>
+<td headers="stat_1" class="gt_row gt_center">9 (11%)</td>
+<td headers="stat_2" class="gt_row gt_center">15 (12%)</td>
+<td headers="stat_3" class="gt_row gt_center">3 (21%)</td>
+<td headers="stat_4" class="gt_row gt_center">17 (28%)</td>
+<td headers="stat_5" class="gt_row gt_center">15 (29%)</td>
+<td headers="stat_6" class="gt_row gt_center">35 (53%)</td>
+<td headers="stat_7" class="gt_row gt_center">67 (71%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;I don't know</td>
+<td headers="stat_0" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">sust_school_iga_list</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Farming</td>
+<td headers="stat_0" class="gt_row gt_center">20 (6.1%)</td>
+<td headers="stat_1" class="gt_row gt_center">3 (4.3%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.9%)</td>
+<td headers="stat_3" class="gt_row gt_center">9 (82%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">4 (11%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (3.2%)</td>
+<td headers="stat_7" class="gt_row gt_center">2 (7.1%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Farming;</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.3%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (3.6%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Farming;Livestock keeping</td>
+<td headers="stat_0" class="gt_row gt_center">76 (23%)</td>
+<td headers="stat_1" class="gt_row gt_center">46 (66%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">2 (4.7%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">28 (90%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Livestock keeping</td>
+<td headers="stat_0" class="gt_row gt_center">222 (68%)</td>
+<td headers="stat_1" class="gt_row gt_center">20 (29%)</td>
+<td headers="stat_2" class="gt_row gt_center">101 (95%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">41 (95%)</td>
+<td headers="stat_5" class="gt_row gt_center">33 (89%)</td>
+<td headers="stat_6" class="gt_row gt_center">2 (6.5%)</td>
+<td headers="stat_7" class="gt_row gt_center">25 (89%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Livestock keeping;Craft Making</td>
+<td headers="stat_0" class="gt_row gt_center">3 (0.9%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">3 (2.8%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School shop</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.3%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;School shop;Craft Making</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.3%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.9%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Selling Hay/grass</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.3%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (9.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Water</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.3%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (9.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">How well school facilities are maintained</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Very poorly maintained</td>
+<td headers="stat_0" class="gt_row gt_center">4 (0.8%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.8%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">3 (2.8%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Somewhat poorly maintained</td>
+<td headers="stat_0" class="gt_row gt_center">23 (4.3%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">5 (36%)</td>
+<td headers="stat_4" class="gt_row gt_center">3 (3.7%)</td>
+<td headers="stat_5" class="gt_row gt_center">3 (5.6%)</td>
+<td headers="stat_6" class="gt_row gt_center">5 (7.1%)</td>
+<td headers="stat_7" class="gt_row gt_center">7 (6.6%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Somewhat well maintained</td>
+<td headers="stat_0" class="gt_row gt_center">252 (47%)</td>
+<td headers="stat_1" class="gt_row gt_center">17 (21%)</td>
+<td headers="stat_2" class="gt_row gt_center">51 (41%)</td>
+<td headers="stat_3" class="gt_row gt_center">8 (57%)</td>
+<td headers="stat_4" class="gt_row gt_center">50 (61%)</td>
+<td headers="stat_5" class="gt_row gt_center">35 (65%)</td>
+<td headers="stat_6" class="gt_row gt_center">41 (59%)</td>
+<td headers="stat_7" class="gt_row gt_center">50 (47%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Very well maintained</td>
+<td headers="stat_0" class="gt_row gt_center">252 (47%)</td>
+<td headers="stat_1" class="gt_row gt_center">64 (79%)</td>
+<td headers="stat_2" class="gt_row gt_center">72 (58%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">29 (35%)</td>
+<td headers="stat_5" class="gt_row gt_center">16 (30%)</td>
+<td headers="stat_6" class="gt_row gt_center">24 (34%)</td>
+<td headers="stat_7" class="gt_row gt_center">46 (43%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">sust_support_need</td>
+<td headers="stat_0" class="gt_row gt_center"></td>
+<td headers="stat_1" class="gt_row gt_center"></td>
+<td headers="stat_2" class="gt_row gt_center"></td>
+<td headers="stat_3" class="gt_row gt_center"></td>
+<td headers="stat_4" class="gt_row gt_center"></td>
+<td headers="stat_5" class="gt_row gt_center"></td>
+<td headers="stat_6" class="gt_row gt_center"></td>
+<td headers="stat_7" class="gt_row gt_center"></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Additional latrines</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Community involvement</td>
+<td headers="stat_0" class="gt_row gt_center">31 (5.8%)</td>
+<td headers="stat_1" class="gt_row gt_center">6 (7.4%)</td>
+<td headers="stat_2" class="gt_row gt_center">10 (8.1%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">3 (3.7%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">2 (2.9%)</td>
+<td headers="stat_7" class="gt_row gt_center">10 (9.4%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Community involvement;Accountable leadership</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.8%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Community involvement;Trees planting</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Enough water.</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support</td>
+<td headers="stat_0" class="gt_row gt_center">70 (13%)</td>
+<td headers="stat_1" class="gt_row gt_center">12 (15%)</td>
+<td headers="stat_2" class="gt_row gt_center">7 (5.6%)</td>
+<td headers="stat_3" class="gt_row gt_center">2 (14%)</td>
+<td headers="stat_4" class="gt_row gt_center">12 (15%)</td>
+<td headers="stat_5" class="gt_row gt_center">3 (5.6%)</td>
+<td headers="stat_6" class="gt_row gt_center">4 (5.7%)</td>
+<td headers="stat_7" class="gt_row gt_center">30 (28%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Community involvement</td>
+<td headers="stat_0" class="gt_row gt_center">5 (0.9%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.8%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">3 (3.7%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Latrines repair</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Materials/Equipment</td>
+<td headers="stat_0" class="gt_row gt_center">40 (7.5%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">2 (14%)</td>
+<td headers="stat_4" class="gt_row gt_center">5 (6.1%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">18 (26%)</td>
+<td headers="stat_7" class="gt_row gt_center">14 (13%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Materials/Equipment;Community involvement</td>
+<td headers="stat_0" class="gt_row gt_center">4 (0.8%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_2" class="gt_row gt_center">1 (0.8%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Materials/Equipment;Feeding program</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Materials/Equipment;School's Health</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Materials/Equipment;Water supply</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Sponsoring more children</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Training</td>
+<td headers="stat_0" class="gt_row gt_center">55 (10%)</td>
+<td headers="stat_1" class="gt_row gt_center">30 (37%)</td>
+<td headers="stat_2" class="gt_row gt_center">16 (13%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">5 (6.1%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">3 (2.8%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Training;Community involvement</td>
+<td headers="stat_0" class="gt_row gt_center">11 (2.1%)</td>
+<td headers="stat_1" class="gt_row gt_center">3 (3.7%)</td>
+<td headers="stat_2" class="gt_row gt_center">3 (2.4%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">4 (4.9%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Training;Materials/Equipment</td>
+<td headers="stat_0" class="gt_row gt_center">73 (14%)</td>
+<td headers="stat_1" class="gt_row gt_center">10 (12%)</td>
+<td headers="stat_2" class="gt_row gt_center">27 (22%)</td>
+<td headers="stat_3" class="gt_row gt_center">3 (21%)</td>
+<td headers="stat_4" class="gt_row gt_center">7 (8.5%)</td>
+<td headers="stat_5" class="gt_row gt_center">3 (5.6%)</td>
+<td headers="stat_6" class="gt_row gt_center">22 (31%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Training;Materials/Equipment;Community involvement</td>
+<td headers="stat_0" class="gt_row gt_center">69 (13%)</td>
+<td headers="stat_1" class="gt_row gt_center">3 (3.7%)</td>
+<td headers="stat_2" class="gt_row gt_center">13 (10%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">7 (8.5%)</td>
+<td headers="stat_5" class="gt_row gt_center">42 (78%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">3 (2.8%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Financial support;Water provisions</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Materials/Equipment</td>
+<td headers="stat_0" class="gt_row gt_center">60 (11%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_2" class="gt_row gt_center">4 (3.2%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">9 (11%)</td>
+<td headers="stat_5" class="gt_row gt_center">6 (11%)</td>
+<td headers="stat_6" class="gt_row gt_center">9 (13%)</td>
+<td headers="stat_7" class="gt_row gt_center">30 (28%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Materials/Equipment;Borehole for clean water</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Materials/Equipment;Community involvement</td>
+<td headers="stat_0" class="gt_row gt_center">10 (1.9%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">5 (4.0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">3 (2.8%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Materials/Equipment;Food program resumption</td>
+<td headers="stat_0" class="gt_row gt_center">2 (0.4%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">2 (2.9%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Materials/Equipment;Tanks donation</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Materials/Equipment;Water tanks</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Training</td>
+<td headers="stat_0" class="gt_row gt_center">37 (7.0%)</td>
+<td headers="stat_1" class="gt_row gt_center">11 (14%)</td>
+<td headers="stat_2" class="gt_row gt_center">8 (6.5%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">6 (7.3%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">4 (5.7%)</td>
+<td headers="stat_7" class="gt_row gt_center">7 (6.6%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Training;Community involvement</td>
+<td headers="stat_0" class="gt_row gt_center">32 (6.0%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_2" class="gt_row gt_center">23 (19%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">8 (9.8%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Training;Materials/Equipment</td>
+<td headers="stat_0" class="gt_row gt_center">10 (1.9%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_2" class="gt_row gt_center">2 (1.6%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">5 (6.1%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">1 (1.4%)</td>
+<td headers="stat_7" class="gt_row gt_center">1 (0.9%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Training;Materials/Equipment;Community involvement</td>
+<td headers="stat_0" class="gt_row gt_center">7 (1.3%)</td>
+<td headers="stat_1" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_2" class="gt_row gt_center">3 (2.4%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">2 (2.4%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Training;Strong leadership</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_4" class="gt_row gt_center">1 (1.2%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Water</td>
+<td headers="stat_0" class="gt_row gt_center">1 (0.2%)</td>
+<td headers="stat_1" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_2" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_3" class="gt_row gt_center">1 (7.1%)</td>
+<td headers="stat_4" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_5" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_6" class="gt_row gt_center">0 (0%)</td>
+<td headers="stat_7" class="gt_row gt_center">0 (0%)</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<p>You can add options to executable code like this</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
