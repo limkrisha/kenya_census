@@ -10,6 +10,8 @@ website:
         href: background.qmd
       - text: "Education"
         href: educ.qmd
+      - text: "Sustainability"
+        href: sustainability.qmd
 
 format:
   html:

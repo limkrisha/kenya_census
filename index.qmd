@@ -2,8 +2,8 @@
 title: "Welcome"
 ---
 
-## Welcome to My Website
+## Welcome to the Kenya Census 2026 Site
 
-This website contains information about my background and education.
+This website contains information about 410 Bridge's Kenya 2026 Census
 
 Use the navigation bar above to explore the different sections.
