@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Kenya Census 2026"
+  navbar:
+    left:
+      - text: "Background"
+        href: background.qmd
+      - text: "Education"
+        href: educ.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true

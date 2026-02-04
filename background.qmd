@@ -1,0 +1,127 @@
+---
+title: "Kenya Census"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-location: left
+    css: styles.css
+editor: visual
+---
+
+```{r background, echo = F}
+pacman::p_load(dplyr, here, tidyverse, readr, readxl, janitor, gtsummary, lubridate, gtsummary)
+
+clean <- read_csv(here("0_data", "20260204_kenya_selected_cols.csv"), show_col_types = F) %>% 
+  select(-date)
+
+source(here("3_code", "2_set_levels.R"))
+source(here("3_code", "3_helper_functions.R"))
+
+```
+
+## Background
+
+-   Data downloaded on February 3, 2026
+
+-   Surveys have been performed from `r format(as.Date(first(clean$survey_date), format = "%m-%d-%y"), "%b %d %Y")` until `r format(as.Date(last(clean$survey_date), format = "%m-%d-%y"), "%b %d %Y")` .
+
+```{r}
+clean %>%
+  tbl_summary(
+    include = geo_community,
+    statistic = all_categorical() ~ "{n}",
+    missing = "no",
+    label = list(geo_community ~ "Community")
+  ) %>%
+  modify_footnote(everything() ~ NA)
+```
+
+## Sustainability
+
+```{r, echo = F}
+
+# Select one table first
+sust_single_vars <- c(
+  "edu_primary_school_any",
+  "sust_project_any",
+  "sust_parent_involvement",
+  "sust_school_iga_any",
+  "sust_school_facility_maint"
+)
+
+tbl_sust_single <- make_tbl_by_comm(clean, sust_single_vars)
+tbl_sust_single
+
+# select multiple table
+tbl_sust_projects <- make_multi_tbl_by_comm(clean, "sust_project_list")
+tbl_sust_projects
+
+# show other
+# other_tables[["sust_project_list"]] %>%
+#   filter(!is.na(other_text), other_text != "")
+
+sust_other_grouped <- other_tables[["sust_project_list"]] %>%
+  filter(!is.na(other_text), other_text != "") %>%
+  mutate(other_group = standardize_sust_other(other_text)) %>%
+  group_by(other_group) %>%
+  summarise(Count = sum(n), .groups = "drop") %>%
+  arrange(desc(Count))
+
+sust_other_grouped %>%
+  rename(`Other (grouped)` = other_group) %>%
+  gt() %>%
+  tab_header(title = "Other sustainability projects mentioned") %>%
+  fmt_number(columns = Count, decimals = 0)
+
+
+```
+
+### Income-generating activity
+
+```{r, echo = F}
+# select multiple - IGA
+tbl_sust_iga <- make_multi_tbl_by_comm(clean, "sust_school_iga_list")
+tbl_sust_iga
+
+# other_tables[["sust_school_iga_list"]] %>%
+#   filter(!is.na(other_text), other_text != "")
+
+iga_other_grouped <- other_tables[["sust_school_iga_list"]] %>%
+  filter(!is.na(other_text), other_text != "") %>%
+  mutate(other_group = standardize_sust_other(other_text)) %>%
+  group_by(other_group) %>%
+  summarise(Count = sum(n), .groups = "drop") %>%
+  arrange(desc(Count))
+
+iga_other_grouped %>%
+  rename(`Other (grouped)` = other_group) %>%
+  gt() %>%
+  tab_header(title = "Other sustainability projects mentioned") %>%
+  fmt_number(columns = Count, decimals = 0)
+
+```
+
+### Support needed
+
+```{r, echo = F}
+# Support needed
+tbl_sust_support <- make_multi_tbl_by_comm(clean, "sust_support_need")
+tbl_sust_support
+
+# other_tables[["sust_support_need"]] %>%
+#   filter(!is.na(other_text), other_text != "")
+
+iga_support_grouped <- other_tables[["sust_support_need"]] %>%
+  filter(!is.na(other_text), other_text != "") %>%
+  mutate(other_group = standardize_sust_other(other_text)) %>%
+  group_by(other_group) %>%
+  summarise(Count = sum(n), .groups = "drop") %>%
+  arrange(desc(Count))
+
+iga_support_grouped %>%
+  rename(`Other (grouped)` = other_group) %>%
+  gt() %>%
+  tab_header(title = "Sustainability support needed") %>%
+  fmt_number(columns = Count, decimals = 0)
+```

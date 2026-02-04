@@ -1,0 +1,9 @@
+---
+title: "Welcome"
+---
+
+## Welcome to My Website
+
+This website contains information about my background and education.
+
+Use the navigation bar above to explore the different sections.
