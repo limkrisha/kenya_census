@@ -3,8 +3,8 @@ title: "Kenya Census"
 format:
   html:
     theme: cosmo
-    toc: true
-    toc-location: left
+    page-layout: full
+    toc: false
     css: styles.css
 editor: visual
 ---
