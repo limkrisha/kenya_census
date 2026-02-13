@@ -20,6 +20,8 @@ website:
         href: water.qmd
       - text: "Economic Development"
         href: econ.qmd
+      - text: "Hope"
+        href: hope.qmd       
 
 format:
   html:

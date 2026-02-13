@@ -1,0 +1,70 @@
+---
+title: "Kenya Census"
+format:
+  html:
+    theme: cosmo
+    page-layout: full
+    toc: false
+    css: styles.css
+editor: visual
+---
+
+```{r load, echo = F, message = F, warning=F}
+pacman::p_load(dplyr, here, tidyverse, readr, readxl, janitor, gtsummary, lubridate, gtsummary)
+source(here("code", "1_setup.R"))
+
+```
+
+# Hope and Happiness
+
+```{r econ, echo = F, warning = F, message=FALSE}
+hope <- c("wb_happy", "wb_hopeful")
+
+tbl_hope <- make_tbl_by_comm(clean, hope)
+tbl_hope %>% 
+  as_gt() %>%
+  opt_row_striping()
+
+library(ggplot2)
+
+plot_wb_hist <- function(df, var, title, xlab) {
+  library(ggplot2)
+  library(rlang)
+
+  var_sym <- ensym(var)
+
+  ggplot(df, aes(x = !!var_sym)) +
+    geom_histogram(
+      binwidth = 1,
+      boundary = 0,
+      fill = "#4C78A8",
+      color = "white"
+    ) +
+    scale_x_continuous(breaks = 0:10, limits = c(0, 10)) +
+    labs(
+      title = title,
+      x = xlab,
+      y = "Number of respondents"
+    ) +
+    theme_minimal(base_size = 13) +
+    theme(
+      plot.title = element_text(face = "bold"),
+      panel.grid.minor = element_blank()
+    )
+}
+
+plot_wb_hist(
+  clean,
+  wb_happy,
+  "Distribution of Happiness",
+  "Happiness score (0–10)"
+)
+
+plot_wb_hist(
+  clean,
+  wb_hopeful,
+  "Distribution of Hopefulness",
+  "Hopefulness score (0–10)"
+)
+
+```
