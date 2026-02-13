@@ -18,6 +18,8 @@ website:
         href: health.qmd
       - text: "Water"
         href: water.qmd
+      - text: "Economic Development"
+        href: econ.qmd
 
 format:
   html:

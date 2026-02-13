@@ -1,0 +1,229 @@
+---
+title: "Kenya Census"
+format:
+  html:
+    theme: cosmo
+    page-layout: full
+    toc: false
+    css: styles.css
+editor: visual
+---
+
+```{r load, echo = F, message = F, warning=F}
+pacman::p_load(dplyr, here, tidyverse, readr, readxl, janitor, gtsummary, lubridate, gtsummary)
+source(here("code", "1_setup.R"))
+
+```
+
+# Economic Development
+
+```{r econ, echo = F}
+tbl_econ <- make_tbl_by_comm(clean, "econ_income_main_clean")
+tbl_econ %>% 
+  as_gt() %>%
+  opt_row_striping()
+
+```
+
+### Other main income sources
+
+```{r ongoing_other, echo = F}
+inc_other_by_comm <- clean %>%
+  filter(!is.na(econ_income_main_other), econ_income_main_other != "") %>%
+  mutate(other_group = stringr::str_to_sentence(stringr::str_squish(econ_income_main_other))) %>%
+  count(geo_community, other_group, name = "Count") %>%
+  arrange(geo_community, desc(Count))
+
+inc_other_by_comm %>%
+  arrange(geo_community) %>%
+  gt() %>%
+  cols_label(
+    geo_community = "Community",
+    other_group = "Other income source (typed)",
+    Count = "Count"
+  ) %>%
+  opt_row_striping() %>%
+  tab_style(
+  style = cell_borders(
+    sides = "bottom",
+    color = "#d1d5db",
+    weight = px(2)
+  ),
+  locations = cells_body(
+    rows = geo_community != dplyr::lead(geo_community)
+  )
+)
+```
+
+# Average daily income, training
+
+```{r inc, echo = F}
+var_inc <- c("econ_income_daily_avg", "econ_training_any", "econ_training_when")
+tbl_inc <- make_tbl_by_comm(clean, var_inc)
+tbl_inc %>% 
+  as_gt() %>%
+  opt_row_striping()
+
+```
+
+## Who ran the training
+
+```{r training, echo = F}
+
+
+tbl_training <- make_multi_tbl_by_comm(clean, "econ_training_provider")
+tbl_training %>% 
+  as_gt() %>%
+  opt_row_striping()
+
+standardize_training_provider_other <- function(x) {
+  x <- stringr::str_to_lower(stringr::str_squish(x))
+
+  dplyr::case_when(
+    stringr::str_detect(x, "\\b410\\b|410\\s*bridge|brigde|brodge") ~ "410 Bridge",
+    stringr::str_detect(x, "\\bngo\\b") ~ "NGO (typed)",
+    stringr::str_detect(x, "gov|government|ministry|county") ~ "Government (typed)",
+    stringr::str_detect(x, "private|company|safaricom|business|corpor") ~ "Private sector",
+    stringr::str_detect(x, "church|pastor|parish|ack") ~ "Church",
+    stringr::str_detect(x, "teacher|trained teachers|school") ~ "School/Teachers",
+    stringr::str_detect(x, "individual|individuals|self\\s*help|group|umoja") ~ "Individual/Group",
+    TRUE ~ "Other (unclear)"
+  )
+}
+
+training_other_by_comm <- other_tables_long[["econ_training_provider"]] %>%
+  dplyr::filter(!is.na(other_text), other_text != "") %>%
+  dplyr::mutate(
+    other_text_clean = stringr::str_squish(other_text),
+    other_group = standardize_training_provider_other(other_text_clean)
+  ) %>%
+  dplyr::group_by(geo_community, other_group) %>%
+  dplyr::summarise(Count = dplyr::n(), .groups = "drop") %>%
+  dplyr::arrange(dplyr::desc(Count))
+
+training_other_by_comm %>%
+  dplyr::arrange(geo_community) %>%
+  dplyr::rename(Community = geo_community, `Other (grouped)` = other_group) %>%
+  gt::gt() %>%
+  gt::tab_header(title = "Other training providers mentioned (by community)") %>%
+  gt::fmt_number(columns = Count, decimals = 0) %>%
+  gt::opt_row_striping() %>%
+  gt::tab_style(
+    style = gt::cell_borders(
+      sides = "bottom",
+      color = "#d1d5db",
+      weight = gt::px(2)
+    ),
+    locations = gt::cells_body(
+      rows = Community != dplyr::lead(Community)
+    )
+  )
+```
+
+-   **410 Bridge** --- includes entries like *410 bridge, 410 Brigde, 410 brodge,* and similar spellings.
+
+-   **NGO** --- entries explicitly typed as *NGO*.
+
+-   **Government** --- entries like *Government, ministry, or county*
+
+-   **Private sector** --- entries such as *private , company, business, Safaricom,* or *corporate*
+
+-   **Church** --- entries like *church, pastor, parish, ACK*
+
+-   **School/Teachers** --- entries such as *trained teachers, teachers, school*
+
+-   **Individual/Group** --- entries like *individual, individuals, self-help group, Umoja self help group,* or similar community groups.
+
+-   **Other** --- entries that do not clearly match any group above.
+
+    # Farming support received
+
+```{r support, echo = F}
+
+tbl_support <- make_tbl_by_comm(clean, "econ_support_otherorg")
+tbl_support %>% 
+  as_gt() %>%
+  opt_row_striping()
+
+
+tbl_support_other <- make_multi_tbl_by_comm(clean, "econ_support_otherorg_type")
+tbl_support_other %>% 
+  as_gt() %>%
+  opt_row_striping()
+
+
+tbl_support_other_by_comm <- other_tables_long[["econ_support_otherorg_type"]] %>%
+  filter(!is.na(other_text), other_text != "") %>%
+  mutate(other_group = standardize_sust_other(other_text)) %>%
+  group_by(geo_community, other_group) %>%
+  summarise(Count = dplyr::n(), .groups = "drop") %>%
+  arrange(desc(Count))
+
+tbl_support_other_by_comm %>%
+  arrange(geo_community) %>%
+  rename(Community = geo_community, `Other (grouped)` = other_group) %>%
+  gt() %>%
+  tab_header(title = "Other type of support received (by community)") %>%
+  fmt_number(columns = Count, decimals = 0) %>%
+  opt_row_striping() %>%
+  tab_style(
+  style = cell_borders(
+    sides = "bottom",
+    color = "#d1d5db",
+    weight = px(2)
+  ),
+  locations = cells_body(
+    rows = Community != dplyr::lead(Community)
+  ))
+
+```
+
+# Community group / Savings
+
+```{r selfhelp, echo = F}
+group <- c("econ_group_member", "econ_group_savings_method", "econ_group_registered", "econ_savings_any", "econ_savings_added_12mo")
+tbl_selfhelp <- make_tbl_by_comm(clean, group)
+tbl_selfhelp %>% 
+  as_gt() %>%
+  opt_row_striping()
+
+tbl_savings <- make_multi_tbl_by_comm(clean, "econ_savings_location")
+tbl_savings %>% 
+  as_gt() %>%
+  opt_row_striping()
+
+
+tbl_savings_other_by_comm <- other_tables_long[["econ_savings_location"]] %>%
+  filter(!is.na(other_text), other_text != "") %>%
+  mutate(other_group = standardize_sust_other(other_text)) %>%
+  group_by(geo_community, other_group) %>%
+  summarise(Count = dplyr::n(), .groups = "drop") %>%
+  arrange(desc(Count))
+
+tbl_savings_other_by_comm %>%
+  arrange(geo_community) %>%
+  rename(Community = geo_community, `Other (grouped)` = other_group) %>%
+  gt() %>%
+  tab_header(title = "Other location of savings (by community)") %>%
+  fmt_number(columns = Count, decimals = 0) %>%
+  opt_row_striping() %>%
+  tab_style(
+  style = cell_borders(
+    sides = "bottom",
+    color = "#d1d5db",
+    weight = px(2)
+  ),
+  locations = cells_body(
+    rows = Community != dplyr::lead(Community)
+  ))
+```
+
+# Food Security
+
+```{r fies, echo = F}
+fies <- c("food_worry", "food_less_meals", "food_sleep_hungry")
+tbl_fies <- make_tbl_by_comm(clean, fies)
+tbl_fies %>% 
+  as_gt() %>%
+  opt_row_striping()
+```

@@ -59,7 +59,7 @@ water_other_by_comm %>%
 )
 ```
 
-# Source of drinking water
+# Water Source Questions
 
 ```{r water_q, echo = F}
 water_vars_1 <- c(
