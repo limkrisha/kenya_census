@@ -16,7 +16,7 @@ source(here("code", "1_setup.R"))
 
 ## Survey
 
--   Data downloaded on February 9, 2026
+-   Data downloaded on February 23, 2026
 
 -   Surveys have been performed from `r format(as.Date(first(clean$survey_date), format = "%m-%d-%y"), "%b %d %Y")` until `r format(as.Date(max(clean$survey_date), format = "%m-%d-%y"), "%b %d %Y")` .
 

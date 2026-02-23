@@ -13,6 +13,7 @@ editor: visual
 pacman::p_load(dplyr, here, tidyverse, readr, readxl, janitor, gtsummary, lubridate, gtsummary)
 source(here("code", "1_setup.R"))
 
+
 ```
 
 ## Sustainability

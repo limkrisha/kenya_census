@@ -69,33 +69,33 @@ health_single   %>%
 
 The following health program responses were consolidated to improve readability while preserving meaning:
 
--   Responses mentioning **410 Bridge or 410-supported activities** (e.g., *410 Bridge*, *410 health program(s)*, *410 medical camp*, *410 health camping*, etc.) were grouped as **\"410-related.\"**
+-   Responses mentioning **410 Bridge or 410-supported activities** (e.g., *410 Bridge*, *410 health program(s)*, *410 medical camp*, *410 health camping*, etc.) were grouped as **"410-related."**
 
--   Variations of **medical camps** (e.g., *medical camp*, *medical camps*, *medical camp\'s*) were grouped as **\"Medical camp.\"**
+-   Variations of **medical camps** (e.g., *medical camp*, *medical camps*, *medical camp's*) were grouped as **"Medical camp."**
 
--   Variations of **free medical camps** (e.g., *free medical camp*, *free medical camps*, *free medical*) were grouped as **\"Free medical camp.\"**
+-   Variations of **free medical camps** (e.g., *free medical camp*, *free medical camps*, *free medical*) were grouped as **"Free medical camp."**
 
--   Responses mentioning **deworming activities** (e.g., *deworming*, *deworming of pupils*, *pupils deworming*, *deworming by county government*, etc.) were grouped as **\"Deworming.\"**
+-   Responses mentioning **deworming activities** (e.g., *deworming*, *deworming of pupils*, *pupils deworming*, *deworming by county government*, etc.) were grouped as **"Deworming."**
 
--   Variations of **vaccination activities** (e.g., *vaccination*, *vaccinations*, *vaccines*, *child vaccination*) were grouped as **\"Vaccination.\"**
+-   Variations of **vaccination activities** (e.g., *vaccination*, *vaccinations*, *vaccines*, *child vaccination*) were grouped as **"Vaccination."**
 
--   Variations of **Community Health Promoter (CHP) activities** (e.g., *CHP*, *Chp*, *CHPs*) were grouped as **\"CHP.\"**
+-   Variations of **Community Health Promoter (CHP) activities** (e.g., *CHP*, *Chp*, *CHPs*) were grouped as **"CHP."**
 
--   References to **CHP trainings or refresher activities** (e.g., *CHPs training*, *refresher course*, *training of CHPs*, *CHPs train on polio management*, etc.) were grouped as **\"CHP training.\"**
+-   References to **CHP trainings or refresher activities** (e.g., *CHPs training*, *refresher course*, *training of CHPs*, *CHPs train on polio management*, etc.) were grouped as **"CHP training."**
 
--   Variations referring to **distribution of mosquito nets** (e.g., *net distribution*, *nets distribution*, *net supply*, *giving out nets*, *mosquito nets*) were grouped as **\"Net distribution.\"**
+-   Variations referring to **distribution of mosquito nets** (e.g., *net distribution*, *nets distribution*, *net supply*, *giving out nets*, *mosquito nets*) were grouped as **"Net distribution."**
 
--   Variations referring to **health screening activities** (e.g., *cancer screening*, *cervical cancer screening*, *screening*) were grouped as **\"Screening.\"**
+-   Variations referring to **health screening activities** (e.g., *cancer screening*, *cervical cancer screening*, *screening*) were grouped as **"Screening."**
 
--   Variations referring to **community health outreach or organizations** (e.g., *community outreach*, *community-based health organization*, county outreach programs) were grouped as **\"Community outreach.\"**
+-   Variations referring to **community health outreach or organizations** (e.g., *community outreach*, *community-based health organization*, county outreach programs) were grouped as **"Community outreach."**
 
--   Variations of **Dignity for Girls programming** (e.g., *dignity for girls*, *dignity for girls and boys*) were grouped as **\"Dignity for girls.\"**
+-   Variations of **Dignity for Girls programming** (e.g., *dignity for girls*, *dignity for girls and boys*) were grouped as **"Dignity for girls."**
 
--   Variations referring to **health insurance registration** (e.g., *SHA registration*, *Social Health Insurance Fund registration*) were grouped as **\"Health insurance registration.\"**
+-   Variations referring to **health insurance registration** (e.g., *SHA registration*, *Social Health Insurance Fund registration*) were grouped as **"Health insurance registration."**
 
--   Variations referring to **maternal health programs** (e.g., *maternal health*, training for expectant mothers) were grouped as **\"Maternal health.\"**
+-   Variations referring to **maternal health programs** (e.g., *maternal health*, training for expectant mothers) were grouped as **"Maternal health."**
 
--   Entries indicating **no program mentioned** (e.g., *No*, *None*) were grouped as **\"None.\"**
+-   Entries indicating **no program mentioned** (e.g., *No*, *None*) were grouped as **"None."**
 
 -   All other responses were retained as originally recorded.
 

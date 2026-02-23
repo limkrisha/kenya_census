@@ -9,19 +9,20 @@ format:
 editor: visual
 ---
 
-```{r background, echo = F, message=F}
+```{r load, echo = F, message = F, warning=F}
 pacman::p_load(dplyr, here, tidyverse, readr, readxl, janitor, gtsummary, lubridate, gtsummary)
 source(here("code", "1_setup.R"))
 
 ```
 
-## Background Questions
+# Food Security
 
-```{r bg, echo = F}
+```{r econ, echo = F, warning = F, message=FALSE}
+food <- c("food_worry", "food_less_meals", "food_sleep_hungry")
 
-make_tbl_by_comm(clean, bg_vars)  %>% 
+tbl_food <- make_tbl_by_comm(clean, food)
+tbl_food %>% 
   as_gt() %>%
   opt_row_striping()
-```
 
-# 
+```
